@@ -1,0 +1,15 @@
+{
+  "db": {
+    "name": "db",
+    "connector": "memory"
+  },
+  "postgresDs": {
+    "host": "127.0.0.1",
+    "port": 5432,
+    "database": "teremfoglalo_db",
+    "password": "pass",
+    "name": "postgresDs",
+    "user": "postgres",
+    "connector": "postgresql"
+  }
+}
