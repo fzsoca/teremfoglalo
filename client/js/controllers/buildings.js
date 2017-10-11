@@ -1,7 +1,7 @@
 angular
   .module('app')
-  .controller('AllBuildingsController', ['$scope', 'building', function($scope,
-                                                                    building) {
-    $scope.buildings = building.find();
+  .controller('AllBuildingsController', ['$scope', 'Building', function($scope,
+                                                                    Building) {
+    $scope.buildings = Building.find();
   }]);
 

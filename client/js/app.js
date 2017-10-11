@@ -18,6 +18,11 @@ angular
       templateUrl: 'views/all-buildings.html',
       controller: 'AllBuildingsController'
     })
+    .state('all-events', {
+      url: '/all-events',
+      templateUrl: 'views/all-events.html',
+      controller: 'AllEventsController'
+    })
     .state('logout', {
       url: '/logout',
       controller: 'AuthLogoutController'
@@ -25,7 +30,7 @@ angular
     .state('sign-up', {
     url: '/sign-up',
     templateUrl: 'views/sign-up-form.html',
-    controller: 'SignUpController',
+    controller: 'SignUpController'
   })
     .state('sign-up-success', {
       url: '/sign-up/success',
