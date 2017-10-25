@@ -9,4 +9,14 @@ angular
         ]
       }
     });
-  }]);
+  }]).controller('DeleteEventsController', ['$scope', 'Event', '$state',
+  '$stateParams', function($scope, Event) {
+      Event.deleteById({
+         id: $stateParams.id
+      }).
+        $promise
+        .then(function () {
+          $state.go('all-events');
+        });
+
+}]);

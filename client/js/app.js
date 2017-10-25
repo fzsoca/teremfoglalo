@@ -23,6 +23,16 @@ angular
       templateUrl: 'views/all-events.html',
       controller: 'AllEventsController'
     })
+    .state('delete-event', {
+      url: '/delete-event',
+      controller: 'DeleteEventsController',
+      authenticate: true
+    })
+    .state('create-event', {
+      url: '/create-event',
+      controller: 'CreateEventController',
+      templateUrl: 'views/create-event.html'
+    })
     .state('logout', {
       url: '/logout',
       controller: 'AuthLogoutController'
@@ -32,6 +42,11 @@ angular
     templateUrl: 'views/sign-up-form.html',
     controller: 'SignUpController'
   })
+    .state('select-room', {
+      url: '/select-room',
+      templateUrl: 'views/select-room.html',
+      controller: 'RoomsByBuilding'
+    })
     .state('sign-up-success', {
       url: '/sign-up/success',
       templateUrl: 'views/sign-up-success.html'

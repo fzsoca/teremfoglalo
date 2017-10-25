@@ -28,6 +28,11 @@
       "type": "belongsTo",
       "model": "room",
       "foreignKey": ""
+    },
+    "customUser": {
+      "type": "hasMany",
+      "model": "customUser",
+      "foreignKey": "participantId"
     }
   },
   "acls": [],

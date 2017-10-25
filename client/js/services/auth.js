@@ -1,6 +1,6 @@
 angular
   .module('app')
-  .factory('AuthService', ['User', '$q', '$rootScope', function(User, $q,
+  .factory('AuthService', ['CustomUser', '$q', '$rootScope', function(User, $q,
                                                                     $rootScope) {
     function login(email, password) {
       return User
@@ -27,11 +27,13 @@ angular
         });
     }
 
-    function register(email, password) {
+    function register(email, password, name) {
       return User
         .create({
           email: email,
+          name: name,
           password: password
+
         })
         .$promise;
     }

@@ -2,6 +2,10 @@ module.exports = function(app){
 
   var postgresDs = app.dataSources.postgresDs;
 
+  postgresDs.automigrate('customUser', function (err) {
+    if(err) return;
+  });
+
   postgresDs.automigrate('building', function(err) {
     if (err) return ;
     app.models.building.create([{

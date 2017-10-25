@@ -2,7 +2,7 @@
 <html lang="en" ng-app="app">
 <head>
   <meta charset="utf-8">
-  <title>loopback-getting-started-intermediate</title>
+  <title>Teremfoglalo</title>
   <link href="css/style.css" rel="stylesheet">
 </head>
 <body>
@@ -16,6 +16,9 @@
       </li>
       <li>
         <a ui-sref="all-events" ui-sref-active="active">All events</a>
+      </li>
+      <li ng-show="currentUser">
+        <a ui-sref="create-event" ui-sref-active="active">Create event</a>
       </li>
       <li ng-hide="currentUser">
         <a ui-sref="sign-up" ui-sref-active="active">Sign up</a>
@@ -38,6 +41,7 @@
 <script src="js/services/lb-services.js"></script>
 <script src="js/controllers/auth.js"></script>
 <script src="js/controllers/buildings.js"></script>
+<script src="js/controllers/rooms.js"></script>
 <script src="js/controllers/events.js"></script>
 <script src="js/services/auth.js"></script>
 </body>

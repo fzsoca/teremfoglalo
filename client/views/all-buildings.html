@@ -1,7 +1,7 @@
 <section>
   <article ng-repeat="b in buildings.slice().reverse()">
     <header>
-      <h1>Hello {{b.name}} </h1>
+      <a ui-sref="select-room({ id: b.id })" ui-sref-active="active">{{b.name}} </a>
 
     </header>
     <p>{{b.address}}</p>
