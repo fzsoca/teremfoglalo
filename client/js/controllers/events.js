@@ -9,10 +9,27 @@ angular
         ]
       }
     });
-  }]).controller('DeleteEventsController', ['$scope', 'Event', '$state',
-  '$stateParams', function($scope, Event) {
+  }]).controller('CreateEventController', ['$scope', '$stateParams', 'Event', '$state', function($scope,$stateParams,
+                                                                     Event, $state) {
+      $scope.submit = function () {
+        Event.create({
+          name: $scope.event.name,
+          start_date: $scope.event.startDate,
+          end_date: $scope.event.endDate,
+          roomId: $stateParams.roomId
+        }).
+          $promise.
+          then(function () {
+          $state.go('all-events');
+        })
+      }
+}])
+  .controller('DeleteEventsController', ['$scope', 'Event',
+  '$stateParams', '$state', function($scope, Event, $stateParams, $state) {
+    console.log("inside deleteeventcontroller");
+    console.log($stateParams.id);
       Event.deleteById({
-         id: $stateParams.id
+         id: $stateParams.eventId
       }).
         $promise
         .then(function () {

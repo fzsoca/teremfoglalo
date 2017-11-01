@@ -1,12 +1,27 @@
 <section>
-  <form name="form" ng-submit="submitForm()">
+  <form name="form" ng-submit="submit()">
     <fieldset>
       <legend>Create event</legend>
 
       <div class="form-group">
+      <label for="name">Név</label>
+        <input type="text" id="name" name="name" ng-model="event.name" required>
 
       </div>
+      <div class="form-group">
+        <label for="startDate">Kezdés időpontja</label>
+          <input type="datetime-local" id="startDate" name="startDate" ng-model="event.startDate" required>
 
+      </div>
+      <div class="form-group">
+        <label for="endDate">Befejezés időpontja</label>
+          <input type="datetime-local" id="endDate" name="endDate" ng-model="event.endDate">
+
+      </div>
+      <div class="form-group">
+        <label for="description">Leírás</label>
+          <input type="textarea" id="description" name="description" ng-model="event.description">
+      </div>
 
       <div class="actions">
         <label></label>
@@ -15,3 +30,4 @@
     </fieldset>
   </form>
   <section>
+    <script>console.log(id)</script>

@@ -1,7 +1,7 @@
 <section>
   <article ng-repeat="r in rooms.slice().reverse()">
     <header>
-      <a ui-sref="create-event({ id: r.id })" ui-sref-active="active">{{r.name}} </a>
+      <a ui-sref="create-event({ roomId: r.id })" ui-sref-active="active">{{r.name}} </a>
 
     </header>
 

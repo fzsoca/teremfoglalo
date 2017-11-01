@@ -1,6 +1,6 @@
 angular
   .module('app')
-  .controller('RoomsByBuilding', ['$scope',
+  .controller('RoomsByBuildingController', ['$scope',
   '$stateParams', 'Room', function($scope, $stateParams, Room) {
    $scope.rooms = Room.find({filter:{
      where: {
