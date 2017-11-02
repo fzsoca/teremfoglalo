@@ -1,7 +1,8 @@
 angular
   .module('app', [
     'ui.router',
-    'lbServices'
+    'lbServices',
+    'ui.calendar'
   ]).config(['$stateProvider', '$urlRouterProvider', function ($stateProvider,
                                                                $urlRouterProvider) {
   $stateProvider.state('forbidden', {

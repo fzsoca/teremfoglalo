@@ -17,6 +17,11 @@
       "type": "hasMany",
       "model": "event",
       "foreignKey": "participantId"
+    },
+    "hostedEvents": {
+      "type": "hasMany",
+      "model": "event",
+      "foreignKey": "ownerId"
     }
   },
   "acls": [],

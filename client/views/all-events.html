@@ -5,7 +5,10 @@
 
     </header>
     <p>{{e.room.name}}</p>
+    <p>{{e.owner.name}}</p>
     <div class="actions" ng-show="currentUser">
       <button ui-sref="delete-event({ eventId: e.id })">Delete</button>
+    </div>
   </article>
+  <div ui-calendar="uiConfig.calendar" ng-model="eventSources"></div>
 </section>

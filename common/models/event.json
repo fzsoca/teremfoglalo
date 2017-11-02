@@ -29,10 +29,15 @@
       "model": "room",
       "foreignKey": ""
     },
-    "customUser": {
+    "participants": {
       "type": "hasMany",
       "model": "customUser",
       "foreignKey": "participantId"
+    },
+    "owner": {
+      "type": "belongsTo",
+      "model": "customUser",
+      "foreignKey": "ownerId"
     }
   },
   "acls": [],
