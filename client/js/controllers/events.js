@@ -14,16 +14,15 @@ angular
 
       }
     };
-
     var eventSource = [];
     var eventSources = [];
-
     var currEvent = {};
     Event.find({
       filter: {
         include: [
           'room',
-          'owner'
+          'owner',
+          'participants'
         ]
       }
     }).$promise
@@ -48,18 +47,21 @@ angular
           start_date: $scope.event.startDate,
           end_date: $scope.event.endDate,
           roomId: $stateParams.roomId,
-          ownerId: 1
+          ownerId: $rootScope.currentUser.id
         }).
           $promise.
           then(function () {
           $state.go('all-events');
         })
       }
+}]).controller('JoinEventController', ['$scope', '$stateParams', 'Event',
+  '$state', '$rootScope', function($scope,$stateParams,
+                                   Event, $state, $rootScope) {
+  Event.participants.add($rootScope.currentUser);
+
 }])
   .controller('DeleteEventsController', ['$scope', 'Event',
   '$stateParams', '$state', function($scope, Event, $stateParams, $state) {
-    console.log("inside deleteeventcontroller");
-    console.log($stateParams.id);
       Event.deleteById({
          id: $stateParams.eventId
       }).

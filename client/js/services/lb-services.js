@@ -151,61 +151,9 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
               method: "GET",
             },
 
-            // INTERNAL. Use Event.participants.findById() instead.
-            "prototype$__findById__participants": {
-              params: {
-                'fk': '@fk',
-              },
-              url: urlBase + "/events/:id/participants/:fk",
-              method: "GET",
-            },
-
-            // INTERNAL. Use Event.participants.destroyById() instead.
-            "prototype$__destroyById__participants": {
-              params: {
-                'fk': '@fk',
-              },
-              url: urlBase + "/events/:id/participants/:fk",
-              method: "DELETE",
-            },
-
-            // INTERNAL. Use Event.participants.updateById() instead.
-            "prototype$__updateById__participants": {
-              params: {
-                'fk': '@fk',
-              },
-              url: urlBase + "/events/:id/participants/:fk",
-              method: "PUT",
-            },
-
             // INTERNAL. Use Event.owner() instead.
             "prototype$__get__owner": {
               url: urlBase + "/events/:id/owner",
-              method: "GET",
-            },
-
-            // INTERNAL. Use Event.participants() instead.
-            "prototype$__get__participants": {
-              isArray: true,
-              url: urlBase + "/events/:id/participants",
-              method: "GET",
-            },
-
-            // INTERNAL. Use Event.participants.create() instead.
-            "prototype$__create__participants": {
-              url: urlBase + "/events/:id/participants",
-              method: "POST",
-            },
-
-            // INTERNAL. Use Event.participants.destroyAll() instead.
-            "prototype$__delete__participants": {
-              url: urlBase + "/events/:id/participants",
-              method: "DELETE",
-            },
-
-            // INTERNAL. Use Event.participants.count() instead.
-            "prototype$__count__participants": {
-              url: urlBase + "/events/:id/participants/count",
               method: "GET",
             },
 
@@ -766,33 +714,6 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
               method: "POST",
             },
 
-            // INTERNAL. Use CustomUser.events.findById() instead.
-            "::findById::CustomUser::events": {
-              params: {
-                'fk': '@fk',
-              },
-              url: urlBase + "/customUsers/:id/events/:fk",
-              method: "GET",
-            },
-
-            // INTERNAL. Use CustomUser.events.destroyById() instead.
-            "::destroyById::CustomUser::events": {
-              params: {
-                'fk': '@fk',
-              },
-              url: urlBase + "/customUsers/:id/events/:fk",
-              method: "DELETE",
-            },
-
-            // INTERNAL. Use CustomUser.events.updateById() instead.
-            "::updateById::CustomUser::events": {
-              params: {
-                'fk': '@fk',
-              },
-              url: urlBase + "/customUsers/:id/events/:fk",
-              method: "PUT",
-            },
-
             // INTERNAL. Use CustomUser.hostedEvents.findById() instead.
             "::findById::CustomUser::hostedEvents": {
               params: {
@@ -818,38 +739,6 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
               },
               url: urlBase + "/customUsers/:id/hostedEvents/:fk",
               method: "PUT",
-            },
-
-            // INTERNAL. Use CustomUser.events() instead.
-            "::get::CustomUser::events": {
-              isArray: true,
-              url: urlBase + "/customUsers/:id/events",
-              method: "GET",
-            },
-
-            // INTERNAL. Use CustomUser.events.create() instead.
-            "::create::CustomUser::events": {
-              url: urlBase + "/customUsers/:id/events",
-              method: "POST",
-            },
-
-            // INTERNAL. Use CustomUser.events.createMany() instead.
-            "::createMany::CustomUser::events": {
-              isArray: true,
-              url: urlBase + "/customUsers/:id/events",
-              method: "POST",
-            },
-
-            // INTERNAL. Use CustomUser.events.destroyAll() instead.
-            "::delete::CustomUser::events": {
-              url: urlBase + "/customUsers/:id/events",
-              method: "DELETE",
-            },
-
-            // INTERNAL. Use CustomUser.events.count() instead.
-            "::count::CustomUser::events": {
-              url: urlBase + "/customUsers/:id/events/count",
-              method: "GET",
             },
 
             // INTERNAL. Use CustomUser.hostedEvents() instead.
@@ -881,6 +770,12 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
             // INTERNAL. Use CustomUser.hostedEvents.count() instead.
             "::count::CustomUser::hostedEvents": {
               url: urlBase + "/customUsers/:id/hostedEvents/count",
+              method: "GET",
+            },
+
+            // INTERNAL. Use Participation.event() instead.
+            "::get::Participation::event": {
+              url: urlBase + "/participations/:id/event",
               method: "GET",
             },
           }
@@ -1170,341 +1065,6 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
         R.room = function() {
           var TargetResource = $injector.get("Room");
           var action = TargetResource["::get::Event::room"];
-          return action.apply(R, arguments);
-        };
-    /**
-     * @ngdoc object
-     * @name lbServices.Event.participants
-     * @header lbServices.Event.participants
-     * @object
-     * @description
-     *
-     * The object `Event.participants` groups methods
-     * manipulating `CustomUser` instances related to `Event`.
-     *
-     * Call {@link lbServices.Event#participants Event.participants()}
-     * to query all related instances.
-     */
-
-
-            /**
-             * @ngdoc method
-             * @name lbServices.Event#participants
-             * @methodOf lbServices.Event
-             *
-             * @description
-             *
-             * Queries participants of event.
-             *
-             * @param {Object=} parameters Request parameters.
-             *
-             *  - `id` – `{*}` - event id
-             *
-             *  - `options` – `{object=}` -
-             *
-             *  - `filter` – `{object=}` -
-             *
-             *  - `options` – `{object=}` -
-             *
-             * @param {function(Array.<Object>,Object)=} successCb
-             *   Success callback with two arguments: `value`, `responseHeaders`.
-             *
-             * @param {function(Object)=} errorCb Error callback with one argument:
-             *   `httpResponse`.
-             *
-             * @returns {Array.<Object>} An empty reference that will be
-             *   populated with the actual data once the response is returned
-             *   from the server.
-             *
-             * <em>
-             * (The remote method definition does not provide any description.
-             * This usually means the response is a `CustomUser` object.)
-             * </em>
-             */
-        R.participants = function() {
-          var TargetResource = $injector.get("CustomUser");
-          var action = TargetResource["::get::Event::participants"];
-          return action.apply(R, arguments);
-        };
-
-            /**
-             * @ngdoc method
-             * @name lbServices.Event.participants#count
-             * @methodOf lbServices.Event.participants
-             *
-             * @description
-             *
-             * Counts participants of event.
-             *
-             * @param {Object=} parameters Request parameters.
-             *
-             *  - `id` – `{*}` - event id
-             *
-             *  - `options` – `{object=}` -
-             *
-             *  - `where` – `{object=}` - Criteria to match model instances
-             *
-             *  - `options` – `{object=}` -
-             *
-             * @param {function(Object,Object)=} successCb
-             *   Success callback with two arguments: `value`, `responseHeaders`.
-             *
-             * @param {function(Object)=} errorCb Error callback with one argument:
-             *   `httpResponse`.
-             *
-             * @returns {Object} An empty reference that will be
-             *   populated with the actual data once the response is returned
-             *   from the server.
-             *
-             * Data properties:
-             *
-             *  - `count` – `{number=}` -
-             */
-        R.participants.count = function() {
-          var TargetResource = $injector.get("CustomUser");
-          var action = TargetResource["::count::Event::participants"];
-          return action.apply(R, arguments);
-        };
-
-            /**
-             * @ngdoc method
-             * @name lbServices.Event.participants#create
-             * @methodOf lbServices.Event.participants
-             *
-             * @description
-             *
-             * Creates a new instance in participants of this model.
-             *
-             * @param {Object=} parameters Request parameters.
-             *
-             *  - `id` – `{*}` - event id
-             *
-             * @param {Object} postData Request data.
-             *
-             *  - `options` – `{object=}` -
-             *
-             *  - `data` – `{object=}` -
-             *
-             *  - `options` – `{object=}` -
-             *
-             * @param {function(Object,Object)=} successCb
-             *   Success callback with two arguments: `value`, `responseHeaders`.
-             *
-             * @param {function(Object)=} errorCb Error callback with one argument:
-             *   `httpResponse`.
-             *
-             * @returns {Object} An empty reference that will be
-             *   populated with the actual data once the response is returned
-             *   from the server.
-             *
-             * <em>
-             * (The remote method definition does not provide any description.
-             * This usually means the response is a `CustomUser` object.)
-             * </em>
-             */
-        R.participants.create = function() {
-          var TargetResource = $injector.get("CustomUser");
-          var action = TargetResource["::create::Event::participants"];
-          return action.apply(R, arguments);
-        };
-
-            /**
-             * @ngdoc method
-             * @name lbServices.Event.participants#createMany
-             * @methodOf lbServices.Event.participants
-             *
-             * @description
-             *
-             * Creates a new instance in participants of this model.
-             *
-             * @param {Object=} parameters Request parameters.
-             *
-             *  - `id` – `{*}` - event id
-             *
-             * @param {Object} postData Request data.
-             *
-             *  - `options` – `{object=}` -
-             *
-             *  - `data` – `{object=}` -
-             *
-             *  - `options` – `{object=}` -
-             *
-             * @param {function(Array.<Object>,Object)=} successCb
-             *   Success callback with two arguments: `value`, `responseHeaders`.
-             *
-             * @param {function(Object)=} errorCb Error callback with one argument:
-             *   `httpResponse`.
-             *
-             * @returns {Array.<Object>} An empty reference that will be
-             *   populated with the actual data once the response is returned
-             *   from the server.
-             *
-             * <em>
-             * (The remote method definition does not provide any description.
-             * This usually means the response is a `CustomUser` object.)
-             * </em>
-             */
-        R.participants.createMany = function() {
-          var TargetResource = $injector.get("CustomUser");
-          var action = TargetResource["::createMany::Event::participants"];
-          return action.apply(R, arguments);
-        };
-
-            /**
-             * @ngdoc method
-             * @name lbServices.Event.participants#destroyAll
-             * @methodOf lbServices.Event.participants
-             *
-             * @description
-             *
-             * Deletes all participants of this model.
-             *
-             * @param {Object=} parameters Request parameters.
-             *
-             *  - `id` – `{*}` - event id
-             *
-             *  - `options` – `{object=}` -
-             *
-             *  - `where` – `{object=}` -
-             *
-             *  - `options` – `{object=}` -
-             *
-             * @param {function(Object,Object)=} successCb
-             *   Success callback with two arguments: `value`, `responseHeaders`.
-             *
-             * @param {function(Object)=} errorCb Error callback with one argument:
-             *   `httpResponse`.
-             *
-             * @returns {Object} An empty reference that will be
-             *   populated with the actual data once the response is returned
-             *   from the server.
-             *
-             * This method returns no data.
-             */
-        R.participants.destroyAll = function() {
-          var TargetResource = $injector.get("CustomUser");
-          var action = TargetResource["::delete::Event::participants"];
-          return action.apply(R, arguments);
-        };
-
-            /**
-             * @ngdoc method
-             * @name lbServices.Event.participants#destroyById
-             * @methodOf lbServices.Event.participants
-             *
-             * @description
-             *
-             * Delete a related item by id for participants.
-             *
-             * @param {Object=} parameters Request parameters.
-             *
-             *  - `id` – `{*}` - event id
-             *
-             *  - `options` – `{object=}` -
-             *
-             *  - `fk` – `{*}` - Foreign key for participants
-             *
-             *  - `options` – `{object=}` -
-             *
-             * @param {function(Object,Object)=} successCb
-             *   Success callback with two arguments: `value`, `responseHeaders`.
-             *
-             * @param {function(Object)=} errorCb Error callback with one argument:
-             *   `httpResponse`.
-             *
-             * @returns {Object} An empty reference that will be
-             *   populated with the actual data once the response is returned
-             *   from the server.
-             *
-             * This method returns no data.
-             */
-        R.participants.destroyById = function() {
-          var TargetResource = $injector.get("CustomUser");
-          var action = TargetResource["::destroyById::Event::participants"];
-          return action.apply(R, arguments);
-        };
-
-            /**
-             * @ngdoc method
-             * @name lbServices.Event.participants#findById
-             * @methodOf lbServices.Event.participants
-             *
-             * @description
-             *
-             * Find a related item by id for participants.
-             *
-             * @param {Object=} parameters Request parameters.
-             *
-             *  - `id` – `{*}` - event id
-             *
-             *  - `options` – `{object=}` -
-             *
-             *  - `fk` – `{*}` - Foreign key for participants
-             *
-             *  - `options` – `{object=}` -
-             *
-             * @param {function(Object,Object)=} successCb
-             *   Success callback with two arguments: `value`, `responseHeaders`.
-             *
-             * @param {function(Object)=} errorCb Error callback with one argument:
-             *   `httpResponse`.
-             *
-             * @returns {Object} An empty reference that will be
-             *   populated with the actual data once the response is returned
-             *   from the server.
-             *
-             * <em>
-             * (The remote method definition does not provide any description.
-             * This usually means the response is a `CustomUser` object.)
-             * </em>
-             */
-        R.participants.findById = function() {
-          var TargetResource = $injector.get("CustomUser");
-          var action = TargetResource["::findById::Event::participants"];
-          return action.apply(R, arguments);
-        };
-
-            /**
-             * @ngdoc method
-             * @name lbServices.Event.participants#updateById
-             * @methodOf lbServices.Event.participants
-             *
-             * @description
-             *
-             * Update a related item by id for participants.
-             *
-             * @param {Object=} parameters Request parameters.
-             *
-             *  - `id` – `{*}` - event id
-             *
-             *  - `fk` – `{*}` - Foreign key for participants
-             *
-             * @param {Object} postData Request data.
-             *
-             *  - `options` – `{object=}` -
-             *
-             *  - `data` – `{object=}` -
-             *
-             *  - `options` – `{object=}` -
-             *
-             * @param {function(Object,Object)=} successCb
-             *   Success callback with two arguments: `value`, `responseHeaders`.
-             *
-             * @param {function(Object)=} errorCb Error callback with one argument:
-             *   `httpResponse`.
-             *
-             * @returns {Object} An empty reference that will be
-             *   populated with the actual data once the response is returned
-             *   from the server.
-             *
-             * <em>
-             * (The remote method definition does not provide any description.
-             * This usually means the response is a `CustomUser` object.)
-             * </em>
-             */
-        R.participants.updateById = function() {
-          var TargetResource = $injector.get("CustomUser");
-          var action = TargetResource["::updateById::Event::participants"];
           return action.apply(R, arguments);
         };
 
@@ -3832,33 +3392,6 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
               method: "PUT",
             },
 
-            // INTERNAL. Use CustomUser.events.findById() instead.
-            "prototype$__findById__events": {
-              params: {
-                'fk': '@fk',
-              },
-              url: urlBase + "/customUsers/:id/events/:fk",
-              method: "GET",
-            },
-
-            // INTERNAL. Use CustomUser.events.destroyById() instead.
-            "prototype$__destroyById__events": {
-              params: {
-                'fk': '@fk',
-              },
-              url: urlBase + "/customUsers/:id/events/:fk",
-              method: "DELETE",
-            },
-
-            // INTERNAL. Use CustomUser.events.updateById() instead.
-            "prototype$__updateById__events": {
-              params: {
-                'fk': '@fk',
-              },
-              url: urlBase + "/customUsers/:id/events/:fk",
-              method: "PUT",
-            },
-
             // INTERNAL. Use CustomUser.hostedEvents.findById() instead.
             "prototype$__findById__hostedEvents": {
               params: {
@@ -4038,31 +3571,6 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
              */
             "prototype$__count__accessTokens": {
               url: urlBase + "/customUsers/:id/accessTokens/count",
-              method: "GET",
-            },
-
-            // INTERNAL. Use CustomUser.events() instead.
-            "prototype$__get__events": {
-              isArray: true,
-              url: urlBase + "/customUsers/:id/events",
-              method: "GET",
-            },
-
-            // INTERNAL. Use CustomUser.events.create() instead.
-            "prototype$__create__events": {
-              url: urlBase + "/customUsers/:id/events",
-              method: "POST",
-            },
-
-            // INTERNAL. Use CustomUser.events.destroyAll() instead.
-            "prototype$__delete__events": {
-              url: urlBase + "/customUsers/:id/events",
-              method: "DELETE",
-            },
-
-            // INTERNAL. Use CustomUser.events.count() instead.
-            "prototype$__count__events": {
-              url: urlBase + "/customUsers/:id/events/count",
               method: "GET",
             },
 
@@ -4938,68 +4446,15 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
               method: "POST",
             },
 
-            // INTERNAL. Use Event.participants.findById() instead.
-            "::findById::Event::participants": {
-              params: {
-                'fk': '@fk',
-              },
-              url: urlBase + "/events/:id/participants/:fk",
-              method: "GET",
-            },
-
-            // INTERNAL. Use Event.participants.destroyById() instead.
-            "::destroyById::Event::participants": {
-              params: {
-                'fk': '@fk',
-              },
-              url: urlBase + "/events/:id/participants/:fk",
-              method: "DELETE",
-            },
-
-            // INTERNAL. Use Event.participants.updateById() instead.
-            "::updateById::Event::participants": {
-              params: {
-                'fk': '@fk',
-              },
-              url: urlBase + "/events/:id/participants/:fk",
-              method: "PUT",
-            },
-
             // INTERNAL. Use Event.owner() instead.
             "::get::Event::owner": {
               url: urlBase + "/events/:id/owner",
               method: "GET",
             },
 
-            // INTERNAL. Use Event.participants() instead.
-            "::get::Event::participants": {
-              isArray: true,
-              url: urlBase + "/events/:id/participants",
-              method: "GET",
-            },
-
-            // INTERNAL. Use Event.participants.create() instead.
-            "::create::Event::participants": {
-              url: urlBase + "/events/:id/participants",
-              method: "POST",
-            },
-
-            // INTERNAL. Use Event.participants.createMany() instead.
-            "::createMany::Event::participants": {
-              isArray: true,
-              url: urlBase + "/events/:id/participants",
-              method: "POST",
-            },
-
-            // INTERNAL. Use Event.participants.destroyAll() instead.
-            "::delete::Event::participants": {
-              url: urlBase + "/events/:id/participants",
-              method: "DELETE",
-            },
-
-            // INTERNAL. Use Event.participants.count() instead.
-            "::count::Event::participants": {
-              url: urlBase + "/events/:id/participants/count",
+            // INTERNAL. Use Participation.customUser() instead.
+            "::get::Participation::customUser": {
+              url: urlBase + "/participations/:id/customUser",
               method: "GET",
             },
 
@@ -5338,341 +4793,6 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
 
     /**
      * @ngdoc object
-     * @name lbServices.CustomUser.events
-     * @header lbServices.CustomUser.events
-     * @object
-     * @description
-     *
-     * The object `CustomUser.events` groups methods
-     * manipulating `Event` instances related to `CustomUser`.
-     *
-     * Call {@link lbServices.CustomUser#events CustomUser.events()}
-     * to query all related instances.
-     */
-
-
-            /**
-             * @ngdoc method
-             * @name lbServices.CustomUser#events
-             * @methodOf lbServices.CustomUser
-             *
-             * @description
-             *
-             * Queries events of customUser.
-             *
-             * @param {Object=} parameters Request parameters.
-             *
-             *  - `id` – `{*}` - customUser id
-             *
-             *  - `options` – `{object=}` -
-             *
-             *  - `filter` – `{object=}` -
-             *
-             *  - `options` – `{object=}` -
-             *
-             * @param {function(Array.<Object>,Object)=} successCb
-             *   Success callback with two arguments: `value`, `responseHeaders`.
-             *
-             * @param {function(Object)=} errorCb Error callback with one argument:
-             *   `httpResponse`.
-             *
-             * @returns {Array.<Object>} An empty reference that will be
-             *   populated with the actual data once the response is returned
-             *   from the server.
-             *
-             * <em>
-             * (The remote method definition does not provide any description.
-             * This usually means the response is a `Event` object.)
-             * </em>
-             */
-        R.events = function() {
-          var TargetResource = $injector.get("Event");
-          var action = TargetResource["::get::CustomUser::events"];
-          return action.apply(R, arguments);
-        };
-
-            /**
-             * @ngdoc method
-             * @name lbServices.CustomUser.events#count
-             * @methodOf lbServices.CustomUser.events
-             *
-             * @description
-             *
-             * Counts events of customUser.
-             *
-             * @param {Object=} parameters Request parameters.
-             *
-             *  - `id` – `{*}` - customUser id
-             *
-             *  - `options` – `{object=}` -
-             *
-             *  - `where` – `{object=}` - Criteria to match model instances
-             *
-             *  - `options` – `{object=}` -
-             *
-             * @param {function(Object,Object)=} successCb
-             *   Success callback with two arguments: `value`, `responseHeaders`.
-             *
-             * @param {function(Object)=} errorCb Error callback with one argument:
-             *   `httpResponse`.
-             *
-             * @returns {Object} An empty reference that will be
-             *   populated with the actual data once the response is returned
-             *   from the server.
-             *
-             * Data properties:
-             *
-             *  - `count` – `{number=}` -
-             */
-        R.events.count = function() {
-          var TargetResource = $injector.get("Event");
-          var action = TargetResource["::count::CustomUser::events"];
-          return action.apply(R, arguments);
-        };
-
-            /**
-             * @ngdoc method
-             * @name lbServices.CustomUser.events#create
-             * @methodOf lbServices.CustomUser.events
-             *
-             * @description
-             *
-             * Creates a new instance in events of this model.
-             *
-             * @param {Object=} parameters Request parameters.
-             *
-             *  - `id` – `{*}` - customUser id
-             *
-             * @param {Object} postData Request data.
-             *
-             *  - `options` – `{object=}` -
-             *
-             *  - `data` – `{object=}` -
-             *
-             *  - `options` – `{object=}` -
-             *
-             * @param {function(Object,Object)=} successCb
-             *   Success callback with two arguments: `value`, `responseHeaders`.
-             *
-             * @param {function(Object)=} errorCb Error callback with one argument:
-             *   `httpResponse`.
-             *
-             * @returns {Object} An empty reference that will be
-             *   populated with the actual data once the response is returned
-             *   from the server.
-             *
-             * <em>
-             * (The remote method definition does not provide any description.
-             * This usually means the response is a `Event` object.)
-             * </em>
-             */
-        R.events.create = function() {
-          var TargetResource = $injector.get("Event");
-          var action = TargetResource["::create::CustomUser::events"];
-          return action.apply(R, arguments);
-        };
-
-            /**
-             * @ngdoc method
-             * @name lbServices.CustomUser.events#createMany
-             * @methodOf lbServices.CustomUser.events
-             *
-             * @description
-             *
-             * Creates a new instance in events of this model.
-             *
-             * @param {Object=} parameters Request parameters.
-             *
-             *  - `id` – `{*}` - customUser id
-             *
-             * @param {Object} postData Request data.
-             *
-             *  - `options` – `{object=}` -
-             *
-             *  - `data` – `{object=}` -
-             *
-             *  - `options` – `{object=}` -
-             *
-             * @param {function(Array.<Object>,Object)=} successCb
-             *   Success callback with two arguments: `value`, `responseHeaders`.
-             *
-             * @param {function(Object)=} errorCb Error callback with one argument:
-             *   `httpResponse`.
-             *
-             * @returns {Array.<Object>} An empty reference that will be
-             *   populated with the actual data once the response is returned
-             *   from the server.
-             *
-             * <em>
-             * (The remote method definition does not provide any description.
-             * This usually means the response is a `Event` object.)
-             * </em>
-             */
-        R.events.createMany = function() {
-          var TargetResource = $injector.get("Event");
-          var action = TargetResource["::createMany::CustomUser::events"];
-          return action.apply(R, arguments);
-        };
-
-            /**
-             * @ngdoc method
-             * @name lbServices.CustomUser.events#destroyAll
-             * @methodOf lbServices.CustomUser.events
-             *
-             * @description
-             *
-             * Deletes all events of this model.
-             *
-             * @param {Object=} parameters Request parameters.
-             *
-             *  - `id` – `{*}` - customUser id
-             *
-             *  - `options` – `{object=}` -
-             *
-             *  - `where` – `{object=}` -
-             *
-             *  - `options` – `{object=}` -
-             *
-             * @param {function(Object,Object)=} successCb
-             *   Success callback with two arguments: `value`, `responseHeaders`.
-             *
-             * @param {function(Object)=} errorCb Error callback with one argument:
-             *   `httpResponse`.
-             *
-             * @returns {Object} An empty reference that will be
-             *   populated with the actual data once the response is returned
-             *   from the server.
-             *
-             * This method returns no data.
-             */
-        R.events.destroyAll = function() {
-          var TargetResource = $injector.get("Event");
-          var action = TargetResource["::delete::CustomUser::events"];
-          return action.apply(R, arguments);
-        };
-
-            /**
-             * @ngdoc method
-             * @name lbServices.CustomUser.events#destroyById
-             * @methodOf lbServices.CustomUser.events
-             *
-             * @description
-             *
-             * Delete a related item by id for events.
-             *
-             * @param {Object=} parameters Request parameters.
-             *
-             *  - `id` – `{*}` - customUser id
-             *
-             *  - `options` – `{object=}` -
-             *
-             *  - `fk` – `{*}` - Foreign key for events
-             *
-             *  - `options` – `{object=}` -
-             *
-             * @param {function(Object,Object)=} successCb
-             *   Success callback with two arguments: `value`, `responseHeaders`.
-             *
-             * @param {function(Object)=} errorCb Error callback with one argument:
-             *   `httpResponse`.
-             *
-             * @returns {Object} An empty reference that will be
-             *   populated with the actual data once the response is returned
-             *   from the server.
-             *
-             * This method returns no data.
-             */
-        R.events.destroyById = function() {
-          var TargetResource = $injector.get("Event");
-          var action = TargetResource["::destroyById::CustomUser::events"];
-          return action.apply(R, arguments);
-        };
-
-            /**
-             * @ngdoc method
-             * @name lbServices.CustomUser.events#findById
-             * @methodOf lbServices.CustomUser.events
-             *
-             * @description
-             *
-             * Find a related item by id for events.
-             *
-             * @param {Object=} parameters Request parameters.
-             *
-             *  - `id` – `{*}` - customUser id
-             *
-             *  - `options` – `{object=}` -
-             *
-             *  - `fk` – `{*}` - Foreign key for events
-             *
-             *  - `options` – `{object=}` -
-             *
-             * @param {function(Object,Object)=} successCb
-             *   Success callback with two arguments: `value`, `responseHeaders`.
-             *
-             * @param {function(Object)=} errorCb Error callback with one argument:
-             *   `httpResponse`.
-             *
-             * @returns {Object} An empty reference that will be
-             *   populated with the actual data once the response is returned
-             *   from the server.
-             *
-             * <em>
-             * (The remote method definition does not provide any description.
-             * This usually means the response is a `Event` object.)
-             * </em>
-             */
-        R.events.findById = function() {
-          var TargetResource = $injector.get("Event");
-          var action = TargetResource["::findById::CustomUser::events"];
-          return action.apply(R, arguments);
-        };
-
-            /**
-             * @ngdoc method
-             * @name lbServices.CustomUser.events#updateById
-             * @methodOf lbServices.CustomUser.events
-             *
-             * @description
-             *
-             * Update a related item by id for events.
-             *
-             * @param {Object=} parameters Request parameters.
-             *
-             *  - `id` – `{*}` - customUser id
-             *
-             *  - `fk` – `{*}` - Foreign key for events
-             *
-             * @param {Object} postData Request data.
-             *
-             *  - `options` – `{object=}` -
-             *
-             *  - `data` – `{object=}` -
-             *
-             *  - `options` – `{object=}` -
-             *
-             * @param {function(Object,Object)=} successCb
-             *   Success callback with two arguments: `value`, `responseHeaders`.
-             *
-             * @param {function(Object)=} errorCb Error callback with one argument:
-             *   `httpResponse`.
-             *
-             * @returns {Object} An empty reference that will be
-             *   populated with the actual data once the response is returned
-             *   from the server.
-             *
-             * <em>
-             * (The remote method definition does not provide any description.
-             * This usually means the response is a `Event` object.)
-             * </em>
-             */
-        R.events.updateById = function() {
-          var TargetResource = $injector.get("Event");
-          var action = TargetResource["::updateById::CustomUser::events"];
-          return action.apply(R, arguments);
-        };
-    /**
-     * @ngdoc object
      * @name lbServices.CustomUser.hostedEvents
      * @header lbServices.CustomUser.hostedEvents
      * @object
@@ -6004,6 +5124,935 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
         R.hostedEvents.updateById = function() {
           var TargetResource = $injector.get("Event");
           var action = TargetResource["::updateById::CustomUser::hostedEvents"];
+          return action.apply(R, arguments);
+        };
+
+
+        return R;
+      }]);
+
+/**
+ * @ngdoc object
+ * @name lbServices.Participation
+ * @header lbServices.Participation
+ * @object
+ *
+ * @description
+ *
+ * A $resource object for interacting with the `Participation` model.
+ *
+ * ## Example
+ *
+ * See
+ * {@link http://docs.angularjs.org/api/ngResource.$resource#example $resource}
+ * for an example of using this object.
+ *
+ */
+  module.factory(
+    "Participation",
+    [
+      'LoopBackResource', 'LoopBackAuth', '$injector', '$q',
+      function(LoopBackResource, LoopBackAuth, $injector, $q) {
+        var R = LoopBackResource(
+        urlBase + "/participations/:id",
+          { 'id': '@id' },
+          {
+
+            // INTERNAL. Use Participation.event() instead.
+            "prototype$__get__event": {
+              url: urlBase + "/participations/:id/event",
+              method: "GET",
+            },
+
+            // INTERNAL. Use Participation.customUser() instead.
+            "prototype$__get__customUser": {
+              url: urlBase + "/participations/:id/customUser",
+              method: "GET",
+            },
+
+            /**
+             * @ngdoc method
+             * @name lbServices.Participation#create
+             * @methodOf lbServices.Participation
+             *
+             * @description
+             *
+             * Create a new instance of the model and persist it into the data source.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *   This method does not accept any parameters.
+             *   Supply an empty object or omit this argument altogether.
+             *
+             * @param {Object} postData Request data.
+             *
+             *  - `data` – `{object=}` - Model instance data
+             *
+             *  - `options` – `{object=}` -
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * <em>
+             * (The remote method definition does not provide any description.
+             * This usually means the response is a `Participation` object.)
+             * </em>
+             */
+            "create": {
+              url: urlBase + "/participations",
+              method: "POST",
+            },
+
+            /**
+             * @ngdoc method
+             * @name lbServices.Participation#createMany
+             * @methodOf lbServices.Participation
+             *
+             * @description
+             *
+             * Create a new instance of the model and persist it into the data source.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *   This method does not accept any parameters.
+             *   Supply an empty object or omit this argument altogether.
+             *
+             * @param {Object} postData Request data.
+             *
+             *  - `data` – `{object=}` - Model instance data
+             *
+             *  - `options` – `{object=}` -
+             *
+             * @param {function(Array.<Object>,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Array.<Object>} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * <em>
+             * (The remote method definition does not provide any description.
+             * This usually means the response is a `Participation` object.)
+             * </em>
+             */
+            "createMany": {
+              isArray: true,
+              url: urlBase + "/participations",
+              method: "POST",
+            },
+
+            /**
+             * @ngdoc method
+             * @name lbServices.Participation#patchOrCreate
+             * @methodOf lbServices.Participation
+             *
+             * @description
+             *
+             * Patch an existing model instance or insert a new one into the data source.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `data` – `{object=}` - Model instance data
+             *
+             *  - `options` – `{object=}` -
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * <em>
+             * (The remote method definition does not provide any description.
+             * This usually means the response is a `Participation` object.)
+             * </em>
+             */
+            "patchOrCreate": {
+              url: urlBase + "/participations",
+              method: "PATCH",
+            },
+
+            /**
+             * @ngdoc method
+             * @name lbServices.Participation#replaceOrCreate
+             * @methodOf lbServices.Participation
+             *
+             * @description
+             *
+             * Replace an existing model instance or insert a new one into the data source.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *   This method does not accept any parameters.
+             *   Supply an empty object or omit this argument altogether.
+             *
+             * @param {Object} postData Request data.
+             *
+             *  - `data` – `{object=}` - Model instance data
+             *
+             *  - `options` – `{object=}` -
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * <em>
+             * (The remote method definition does not provide any description.
+             * This usually means the response is a `Participation` object.)
+             * </em>
+             */
+            "replaceOrCreate": {
+              url: urlBase + "/participations/replaceOrCreate",
+              method: "POST",
+            },
+
+            /**
+             * @ngdoc method
+             * @name lbServices.Participation#upsertWithWhere
+             * @methodOf lbServices.Participation
+             *
+             * @description
+             *
+             * Update an existing model instance or insert a new one into the data source based on the where criteria.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `where` – `{object=}` - Criteria to match model instances
+             *
+             * @param {Object} postData Request data.
+             *
+             *  - `data` – `{object=}` - An object of model property name/value pairs
+             *
+             *  - `options` – `{object=}` -
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * <em>
+             * (The remote method definition does not provide any description.
+             * This usually means the response is a `Participation` object.)
+             * </em>
+             */
+            "upsertWithWhere": {
+              url: urlBase + "/participations/upsertWithWhere",
+              method: "POST",
+            },
+
+            /**
+             * @ngdoc method
+             * @name lbServices.Participation#exists
+             * @methodOf lbServices.Participation
+             *
+             * @description
+             *
+             * Check whether a model instance exists in the data source.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `id` – `{*}` - Model id
+             *
+             *  - `options` – `{object=}` -
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * Data properties:
+             *
+             *  - `exists` – `{boolean=}` -
+             */
+            "exists": {
+              url: urlBase + "/participations/:id/exists",
+              method: "GET",
+            },
+
+            /**
+             * @ngdoc method
+             * @name lbServices.Participation#findById
+             * @methodOf lbServices.Participation
+             *
+             * @description
+             *
+             * Find a model instance by {{id}} from the data source.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `id` – `{*}` - Model id
+             *
+             *  - `filter` – `{object=}` - Filter defining fields and include - must be a JSON-encoded string ({"something":"value"})
+             *
+             *  - `options` – `{object=}` -
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * <em>
+             * (The remote method definition does not provide any description.
+             * This usually means the response is a `Participation` object.)
+             * </em>
+             */
+            "findById": {
+              url: urlBase + "/participations/:id",
+              method: "GET",
+            },
+
+            /**
+             * @ngdoc method
+             * @name lbServices.Participation#replaceById
+             * @methodOf lbServices.Participation
+             *
+             * @description
+             *
+             * Replace attributes for a model instance and persist it into the data source.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `id` – `{*}` - Model id
+             *
+             * @param {Object} postData Request data.
+             *
+             *  - `data` – `{object=}` - Model instance data
+             *
+             *  - `options` – `{object=}` -
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * <em>
+             * (The remote method definition does not provide any description.
+             * This usually means the response is a `Participation` object.)
+             * </em>
+             */
+            "replaceById": {
+              url: urlBase + "/participations/:id/replace",
+              method: "POST",
+            },
+
+            /**
+             * @ngdoc method
+             * @name lbServices.Participation#find
+             * @methodOf lbServices.Participation
+             *
+             * @description
+             *
+             * Find all instances of the model matched by filter from the data source.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `filter` – `{object=}` - Filter defining fields, where, include, order, offset, and limit - must be a JSON-encoded string ({"something":"value"})
+             *
+             *  - `options` – `{object=}` -
+             *
+             * @param {function(Array.<Object>,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Array.<Object>} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * <em>
+             * (The remote method definition does not provide any description.
+             * This usually means the response is a `Participation` object.)
+             * </em>
+             */
+            "find": {
+              isArray: true,
+              url: urlBase + "/participations",
+              method: "GET",
+            },
+
+            /**
+             * @ngdoc method
+             * @name lbServices.Participation#findOne
+             * @methodOf lbServices.Participation
+             *
+             * @description
+             *
+             * Find first instance of the model matched by filter from the data source.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `filter` – `{object=}` - Filter defining fields, where, include, order, offset, and limit - must be a JSON-encoded string ({"something":"value"})
+             *
+             *  - `options` – `{object=}` -
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * <em>
+             * (The remote method definition does not provide any description.
+             * This usually means the response is a `Participation` object.)
+             * </em>
+             */
+            "findOne": {
+              url: urlBase + "/participations/findOne",
+              method: "GET",
+            },
+
+            /**
+             * @ngdoc method
+             * @name lbServices.Participation#updateAll
+             * @methodOf lbServices.Participation
+             *
+             * @description
+             *
+             * Update instances of the model matched by {{where}} from the data source.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `where` – `{object=}` - Criteria to match model instances
+             *
+             * @param {Object} postData Request data.
+             *
+             *  - `data` – `{object=}` - An object of model property name/value pairs
+             *
+             *  - `options` – `{object=}` -
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * Information related to the outcome of the operation
+             */
+            "updateAll": {
+              url: urlBase + "/participations/update",
+              method: "POST",
+            },
+
+            /**
+             * @ngdoc method
+             * @name lbServices.Participation#deleteById
+             * @methodOf lbServices.Participation
+             *
+             * @description
+             *
+             * Delete a model instance by {{id}} from the data source.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `id` – `{*}` - Model id
+             *
+             *  - `options` – `{object=}` -
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * <em>
+             * (The remote method definition does not provide any description.
+             * This usually means the response is a `Participation` object.)
+             * </em>
+             */
+            "deleteById": {
+              url: urlBase + "/participations/:id",
+              method: "DELETE",
+            },
+
+            /**
+             * @ngdoc method
+             * @name lbServices.Participation#count
+             * @methodOf lbServices.Participation
+             *
+             * @description
+             *
+             * Count instances of the model matched by where from the data source.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `where` – `{object=}` - Criteria to match model instances
+             *
+             *  - `options` – `{object=}` -
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * Data properties:
+             *
+             *  - `count` – `{number=}` -
+             */
+            "count": {
+              url: urlBase + "/participations/count",
+              method: "GET",
+            },
+
+            /**
+             * @ngdoc method
+             * @name lbServices.Participation#prototype$patchAttributes
+             * @methodOf lbServices.Participation
+             *
+             * @description
+             *
+             * Patch attributes for a model instance and persist it into the data source.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `id` – `{*}` - participation id
+             *
+             *  - `options` – `{object=}` -
+             *
+             *  - `data` – `{object=}` - An object of model property name/value pairs
+             *
+             *  - `options` – `{object=}` -
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * <em>
+             * (The remote method definition does not provide any description.
+             * This usually means the response is a `Participation` object.)
+             * </em>
+             */
+            "prototype$patchAttributes": {
+              url: urlBase + "/participations/:id",
+              method: "PATCH",
+            },
+
+            /**
+             * @ngdoc method
+             * @name lbServices.Participation#createChangeStream
+             * @methodOf lbServices.Participation
+             *
+             * @description
+             *
+             * Create a change stream.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *   This method does not accept any parameters.
+             *   Supply an empty object or omit this argument altogether.
+             *
+             * @param {Object} postData Request data.
+             *
+             *  - `options` – `{object=}` -
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * Data properties:
+             *
+             *  - `changes` – `{ReadableStream=}` -
+             */
+            "createChangeStream": {
+              url: urlBase + "/participations/change-stream",
+              method: "POST",
+            },
+          }
+        );
+
+
+
+            /**
+             * @ngdoc method
+             * @name lbServices.Participation#upsert
+             * @methodOf lbServices.Participation
+             *
+             * @description
+             *
+             * Patch an existing model instance or insert a new one into the data source.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `data` – `{object=}` - Model instance data
+             *
+             *  - `options` – `{object=}` -
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * <em>
+             * (The remote method definition does not provide any description.
+             * This usually means the response is a `Participation` object.)
+             * </em>
+             */
+        R["upsert"] = R["patchOrCreate"];
+
+            /**
+             * @ngdoc method
+             * @name lbServices.Participation#updateOrCreate
+             * @methodOf lbServices.Participation
+             *
+             * @description
+             *
+             * Patch an existing model instance or insert a new one into the data source.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `data` – `{object=}` - Model instance data
+             *
+             *  - `options` – `{object=}` -
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * <em>
+             * (The remote method definition does not provide any description.
+             * This usually means the response is a `Participation` object.)
+             * </em>
+             */
+        R["updateOrCreate"] = R["patchOrCreate"];
+
+            /**
+             * @ngdoc method
+             * @name lbServices.Participation#patchOrCreateWithWhere
+             * @methodOf lbServices.Participation
+             *
+             * @description
+             *
+             * Update an existing model instance or insert a new one into the data source based on the where criteria.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `where` – `{object=}` - Criteria to match model instances
+             *
+             * @param {Object} postData Request data.
+             *
+             *  - `data` – `{object=}` - An object of model property name/value pairs
+             *
+             *  - `options` – `{object=}` -
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * <em>
+             * (The remote method definition does not provide any description.
+             * This usually means the response is a `Participation` object.)
+             * </em>
+             */
+        R["patchOrCreateWithWhere"] = R["upsertWithWhere"];
+
+            /**
+             * @ngdoc method
+             * @name lbServices.Participation#update
+             * @methodOf lbServices.Participation
+             *
+             * @description
+             *
+             * Update instances of the model matched by {{where}} from the data source.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `where` – `{object=}` - Criteria to match model instances
+             *
+             * @param {Object} postData Request data.
+             *
+             *  - `data` – `{object=}` - An object of model property name/value pairs
+             *
+             *  - `options` – `{object=}` -
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * Information related to the outcome of the operation
+             */
+        R["update"] = R["updateAll"];
+
+            /**
+             * @ngdoc method
+             * @name lbServices.Participation#destroyById
+             * @methodOf lbServices.Participation
+             *
+             * @description
+             *
+             * Delete a model instance by {{id}} from the data source.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `id` – `{*}` - Model id
+             *
+             *  - `options` – `{object=}` -
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * <em>
+             * (The remote method definition does not provide any description.
+             * This usually means the response is a `Participation` object.)
+             * </em>
+             */
+        R["destroyById"] = R["deleteById"];
+
+            /**
+             * @ngdoc method
+             * @name lbServices.Participation#removeById
+             * @methodOf lbServices.Participation
+             *
+             * @description
+             *
+             * Delete a model instance by {{id}} from the data source.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `id` – `{*}` - Model id
+             *
+             *  - `options` – `{object=}` -
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * <em>
+             * (The remote method definition does not provide any description.
+             * This usually means the response is a `Participation` object.)
+             * </em>
+             */
+        R["removeById"] = R["deleteById"];
+
+            /**
+             * @ngdoc method
+             * @name lbServices.Participation#prototype$updateAttributes
+             * @methodOf lbServices.Participation
+             *
+             * @description
+             *
+             * Patch attributes for a model instance and persist it into the data source.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `id` – `{*}` - participation id
+             *
+             *  - `options` – `{object=}` -
+             *
+             *  - `data` – `{object=}` - An object of model property name/value pairs
+             *
+             *  - `options` – `{object=}` -
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * <em>
+             * (The remote method definition does not provide any description.
+             * This usually means the response is a `Participation` object.)
+             * </em>
+             */
+        R["prototype$updateAttributes"] = R["prototype$patchAttributes"];
+
+
+        /**
+        * @ngdoc property
+        * @name lbServices.Participation#modelName
+        * @propertyOf lbServices.Participation
+        * @description
+        * The name of the model represented by this $resource,
+        * i.e. `Participation`.
+        */
+        R.modelName = "Participation";
+
+
+            /**
+             * @ngdoc method
+             * @name lbServices.Participation#event
+             * @methodOf lbServices.Participation
+             *
+             * @description
+             *
+             * Fetches belongsTo relation event.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `id` – `{*}` - participation id
+             *
+             *  - `options` – `{object=}` -
+             *
+             *  - `refresh` – `{boolean=}` -
+             *
+             *  - `options` – `{object=}` -
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * <em>
+             * (The remote method definition does not provide any description.
+             * This usually means the response is a `Event` object.)
+             * </em>
+             */
+        R.event = function() {
+          var TargetResource = $injector.get("Event");
+          var action = TargetResource["::get::Participation::event"];
+          return action.apply(R, arguments);
+        };
+
+            /**
+             * @ngdoc method
+             * @name lbServices.Participation#customUser
+             * @methodOf lbServices.Participation
+             *
+             * @description
+             *
+             * Fetches belongsTo relation customUser.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `id` – `{*}` - participation id
+             *
+             *  - `options` – `{object=}` -
+             *
+             *  - `refresh` – `{boolean=}` -
+             *
+             *  - `options` – `{object=}` -
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * <em>
+             * (The remote method definition does not provide any description.
+             * This usually means the response is a `CustomUser` object.)
+             * </em>
+             */
+        R.customUser = function() {
+          var TargetResource = $injector.get("CustomUser");
+          var action = TargetResource["::get::Participation::customUser"];
           return action.apply(R, arguments);
         };
 

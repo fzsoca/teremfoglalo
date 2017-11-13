@@ -14,6 +14,11 @@ angular
       templateUrl: 'views/login.html',
       controller: 'AuthLoginController'
     })
+    .state('reset-password', {
+      url: '/reset-password',
+      templateUrl: 'views/reset-password.html',
+      controller: 'ResetPasswordController'
+    })
     .state('all-buildings', {
       url: '/all-buildings',
       templateUrl: 'views/all-buildings.html',
@@ -24,6 +29,11 @@ angular
       templateUrl: 'views/all-events.html',
       controller: 'AllEventsController'
     })
+    .state('join-events', {
+      url: '/join-event/:eventId',
+      controller: 'AllEventsController',
+      authenticate: true
+    })
     .state('delete-event', {
       url: '/delete-event/:eventId',
       controller: 'DeleteEventsController',
@@ -32,7 +42,8 @@ angular
     .state('create-event', {
       url: '/create-event/:roomId',
       controller: 'CreateEventController',
-      templateUrl: 'views/create-event.html'
+      templateUrl: 'views/create-event.html',
+      authenticate: true
     })
     .state('logout', {
       url: '/logout',

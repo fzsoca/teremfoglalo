@@ -16,7 +16,8 @@
     "events": {
       "type": "hasMany",
       "model": "event",
-      "foreignKey": "participantId"
+      "foreignKey": "",
+      "through": "Participation"
     },
     "hostedEvents": {
       "type": "hasMany",
@@ -24,6 +25,13 @@
       "foreignKey": "ownerId"
     }
   },
-  "acls": [],
+  "acls": [
+    {
+      "accessType": "*",
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "DENY"
+    }
+  ],
   "methods": {}
 }

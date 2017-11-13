@@ -14,14 +14,23 @@ angular
       };
     }
   ])
-  .controller('AuthLogoutController', ['$scope', 'AuthService', '$state',
+  .controller('ResetPasswordController', ['$scope', 'AuthService', '$state',
+
     function($scope, AuthService, $state) {
-      AuthService.logout()
-        .then(function() {
-          $state.go('all-buildings');
-        });
+      $scope.user = {
+        email: 'fazekas.zsolt95@gmail.com'
+      };
+      AuthService.resetPassword($scope.user.email);
+
     }
-  ])
+  ]).controller('AuthLogoutController', ['$scope', 'AuthService', '$state',
+  function($scope, AuthService, $state) {
+    AuthService.logout()
+      .then(function() {
+        $state.go('all-buildings');
+      });
+  }
+])
   .controller('SignUpController', ['$scope', 'AuthService', '$state',
     function($scope, AuthService, $state) {
 

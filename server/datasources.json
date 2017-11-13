@@ -11,5 +11,24 @@
     "name": "postgresDs",
     "user": "postgres",
     "connector": "postgresql"
+  },
+  "emailDs": {
+    "name": "emailDs",
+    "connector": "mail",
+    "transports": [
+      {
+        "type": "smtp",
+        "host": "smtp.gmail.com",
+        "secure": true,
+        "port": 465,
+        "tls": {
+          "rejectUnauthorized": false
+        },
+        "auth": {
+          "user": "teremfoglaloinfo@gmail.com",
+          "pass": "fapapucs"
+        }
+      }
+    ]
   }
 }

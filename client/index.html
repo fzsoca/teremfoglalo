@@ -25,6 +25,9 @@
       <li ng-hide="currentUser">
         <a ui-sref="login" ui-sref-active="active">Log in</a>
       </li>
+      <li ng-hide="currentUser">
+        <a ui-sref="reset-password" ui-sref-active="active"> Reset Password</a>
+      </li>
       <li ng-show="currentUser">
         <a ui-sref="logout" ui-sref-active="active">Log out</a>
       </li>

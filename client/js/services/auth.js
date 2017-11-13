@@ -37,10 +37,17 @@ angular
         })
         .$promise;
     }
+    function resetPassword(email) {
+      return User.resetPassword({
+        email: email
+      });
+
+    }
     return {
       login: login,
       logout: logout,
-      register: register
+      register: register,
+      resetPassword: resetPassword
     };
   }]);
 

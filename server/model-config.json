@@ -39,6 +39,9 @@
   "Message": {
     "dataSource": null
   },
+  "Email": {
+    "dataSource": "emailDs"
+  },
   "event": {
     "dataSource": "postgresDs",
     "public": true
@@ -52,6 +55,10 @@
     "public": true
   },
   "customUser": {
+    "dataSource": "postgresDs",
+    "public": true
+  },
+  "participation": {
     "dataSource": "postgresDs",
     "public": true
   }

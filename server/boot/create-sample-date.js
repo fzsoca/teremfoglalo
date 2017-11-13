@@ -1,5 +1,6 @@
 module.exports = function(app) {
   var postgresDs = app.dataSources.postgresDs;
+  postgresDs.automigrate('participation');
 
   postgresDs.automigrate('customUser', function(err) {
     if (err) return;
@@ -44,10 +45,17 @@ module.exports = function(app) {
       app.models.event.create([{
         name: 'eloadas',
         start_date: Date.now(),
-        end_date: Date.now() + 10000,
+        end_date: Date.now() + 100000000,
         description: 'Interesting stuff',
         roomId: rooms[0].id,
-      }], function(err, events) {
+      },{
+        name: 'stuff',
+        start_date: Date.now() - 100000,
+        end_date: Date.now() - 1000,
+        description: 'more stuff',
+        roomId: rooms[0].id,
+      }
+      ], function(err, events) {
         if (err) throw err;
 
         console.log('Models created: \n', events);
