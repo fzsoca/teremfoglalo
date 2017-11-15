@@ -20,10 +20,32 @@ angular
       $scope.user = {
         email: 'fazekas.zsolt95@gmail.com'
       };
-      AuthService.resetPassword($scope.user.email);
+      $scope.submit = function () {
+        AuthService.resetPassword($scope.user.email);
+      }
+
 
     }
-  ]).controller('AuthLogoutController', ['$scope', 'AuthService', '$state',
+  ]).controller('ResetPasswordPost', ['$scope', 'AuthService', '$state', '$http', '$location',
+
+  function($scope, AuthService, $state, $http, $location) {
+    var token = $location.search().access_token;
+    console.log(token);
+    $scope.submit = function () {
+      $http({
+        method: 'POST',
+        url: '/api/customUsers/reset-password?access_token=' + token,
+        data: "newPassword=" + $scope.newPassword,
+        headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+      })
+        .then(function () {
+          $state.go('login');
+        })
+
+    }
+
+  }
+]).controller('AuthLogoutController', ['$scope', 'AuthService', '$state',
   function($scope, AuthService, $state) {
     AuthService.logout()
       .then(function() {

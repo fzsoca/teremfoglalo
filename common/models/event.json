@@ -32,8 +32,7 @@
     "participants": {
       "type": "hasMany",
       "model": "customUser",
-      "foreignKey": "",
-      "through": "Participation"
+      "foreignKey": "eventId"
     },
     "owner": {
       "type": "belongsTo",

@@ -21,8 +21,7 @@ angular
       filter: {
         include: [
           'room',
-          'owner',
-          'participants'
+          'owner'
         ]
       }
     }).$promise
@@ -37,6 +36,7 @@ angular
         eventSources.push({events: eventSource});
         $scope.eventSources = eventSources;
       });
+
 
 
   }]).controller('CreateEventController', ['$scope', '$stateParams', 'Event', '$state', '$rootScope', function($scope,$stateParams,

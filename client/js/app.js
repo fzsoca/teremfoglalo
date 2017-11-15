@@ -3,8 +3,8 @@ angular
     'ui.router',
     'lbServices',
     'ui.calendar'
-  ]).config(['$stateProvider', '$urlRouterProvider', function ($stateProvider,
-                                                               $urlRouterProvider) {
+  ]).config(['$stateProvider', '$urlRouterProvider', '$locationProvider', function ($stateProvider,
+                                                               $urlRouterProvider, $locationProvider) {
   $stateProvider.state('forbidden', {
     url: '/forbidden',
     templateUrl: 'views/forbidden.html'
@@ -18,6 +18,11 @@ angular
       url: '/reset-password',
       templateUrl: 'views/reset-password.html',
       controller: 'ResetPasswordController'
+    })
+    .state('reset-password-form', {
+    url: '/reset-password-form?access_token',
+    templateUrl: 'views/reset-password-form.html',
+    controller: 'ResetPasswordPost'
     })
     .state('all-buildings', {
       url: '/all-buildings',
@@ -64,6 +69,7 @@ angular
       templateUrl: 'views/sign-up-success.html'
     });
   //$urlRouterProvider.otherwise('all-reviews');
+  //$locationProvider.html5Mode({ enabled: true });
 }])
   .run(['$rootScope', '$state', function ($rootScope, $state) {
     $rootScope.$on('$stateChangeStart', function (event, next) {

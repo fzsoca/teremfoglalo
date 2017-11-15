@@ -16,8 +16,7 @@
     "events": {
       "type": "hasMany",
       "model": "event",
-      "foreignKey": "",
-      "through": "Participation"
+      "foreignKey": "participantId"
     },
     "hostedEvents": {
       "type": "hasMany",

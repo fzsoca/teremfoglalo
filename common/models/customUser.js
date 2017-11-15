@@ -4,7 +4,7 @@ var path = require('path');
 
 module.exports = function(CustomUser) {
   CustomUser.on('resetPasswordRequest', function(info) {
-    var url = 'http://' + config.host + ':' + config.port + '/api/CustomUsers/reset-password';
+    var url = 'http://localhost'+ ':' + config.port + '/index.html#/reset-password-form';
     var html = 'Click <a href="' + url + '?access_token=' +
       info.accessToken.id + '">here</a> to reset your password';
 
