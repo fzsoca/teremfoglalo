@@ -34,9 +34,9 @@ angular
       templateUrl: 'views/all-events.html',
       controller: 'AllEventsController'
     })
-    .state('join-events', {
+    .state('join-event', {
       url: '/join-event/:eventId',
-      controller: 'AllEventsController',
+      controller: 'JoinEventController',
       authenticate: true
     })
     .state('delete-event', {

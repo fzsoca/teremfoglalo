@@ -32,7 +32,8 @@
     "participants": {
       "type": "hasMany",
       "model": "customUser",
-      "foreignKey": "eventId"
+      "foreignKey": "eventId",
+      "through": "participation"
     },
     "owner": {
       "type": "belongsTo",
@@ -66,6 +67,12 @@
       "principalId": "$owner",
       "permission": "ALLOW",
       "property": "delete"
+    },
+    {
+      "accessType": "WRITE",
+      "principalType": "ROLE",
+      "principalId": "$authenticated",
+      "permission": "ALLOW"
     }
   ],
   "methods": {}

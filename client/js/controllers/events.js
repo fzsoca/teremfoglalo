@@ -2,6 +2,8 @@ angular
   .module('app')
   .controller('AllEventsController', ['$scope', 'Event', function($scope,
                                                                         Event) {
+
+
     $scope.uiConfig = {
       calendar:{
         height: 450,
@@ -21,7 +23,8 @@ angular
       filter: {
         include: [
           'room',
-          'owner'
+          'owner',
+          'participants'
         ]
       }
     }).$promise
@@ -34,7 +37,7 @@ angular
         });
         $scope.events = _events;
         eventSources.push({events: eventSource});
-        $scope.eventSources = eventSources;
+        $scope.eventSources = eventSource;
       });
 
 
@@ -54,11 +57,13 @@ angular
           $state.go('all-events');
         })
       }
-}]).controller('JoinEventController', ['$scope', '$stateParams', 'Event',
-  '$state', '$rootScope', function($scope,$stateParams,
-                                   Event, $state, $rootScope) {
-  Event.participants.add($rootScope.currentUser);
-
+}])
+  .controller('JoinEventController', ['$scope', '$stateParams', 'Event',
+  '$state', '$rootScope', 'Participation', function($scope,$stateParams,
+                                   Event, $state, $rootScope, Participation) {
+    Event.participants.link({id: $stateParams.eventId, fk: $rootScope.currentUser.id}).$promise.then(function () {
+      alert("Joined group");
+    });
 }])
   .controller('DeleteEventsController', ['$scope', 'Event',
   '$stateParams', '$state', function($scope, Event, $stateParams, $state) {
