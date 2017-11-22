@@ -1,7 +1,7 @@
 angular
   .module('app')
-  .controller('AllEventsController', ['$scope', 'Event', function($scope,
-                                                                        Event) {
+  .controller('AllEventsController', ['$scope', 'Event', 'uiCalendarConfig', function($scope,
+                                                                        Event, uiCalendarConfig) {
 
 
     $scope.uiConfig = {
@@ -17,7 +17,7 @@ angular
       }
     };
     var eventSource = [];
-    var eventSources = [];
+
     var currEvent = {};
     Event.find({
       filter: {
@@ -36,8 +36,11 @@ angular
           eventSource.push(currEvent);
         });
         $scope.events = _events;
-        eventSources.push({events: eventSource});
         $scope.eventSources = eventSource;
+        uiCalendarConfig.calendars['myCalendar'].fullCalendar('removeEvents');
+        uiCalendarConfig.calendars['myCalendar'].fullCalendar('addEventSource', $scope.eventSources);
+
+
       });
 
 

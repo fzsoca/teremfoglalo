@@ -11,7 +11,8 @@
       <button ui-sref="join-event({ eventId: e.id })">Join</button>
     </div>
   </article>
-  <div ui-calendar="uiConfig.calendar" ng-model="eventSources"></div>
+  {{eventSources}}
+  <div ui-calendar="uiConfig.calendar" ng-model="eventSources" calendar="myCalendar"></div>
 
 
 </section>
