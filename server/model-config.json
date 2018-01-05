@@ -19,7 +19,14 @@
   },
   "AccessToken": {
     "dataSource": "db",
-    "public": false
+    "public": false,
+    "relations": {
+      "user": {
+        "type": "belongsTo",
+        "model": "customUser",
+        "foreignKey": "userId"
+      }
+    }
   },
   "ACL": {
     "dataSource": "db",
@@ -59,6 +66,10 @@
     "public": true
   },
   "participation": {
+    "dataSource": "postgresDs",
+    "public": true
+  },
+  "registrationToken": {
     "dataSource": "postgresDs",
     "public": true
   }

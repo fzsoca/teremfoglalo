@@ -10,6 +10,8 @@ angular
         })
         .$promise
         .then(function(response) {
+          console.log(response.id);
+          console.log("inside login");
           $rootScope.currentUser = {
             id: response.user.id,
             tokenId: response.id,

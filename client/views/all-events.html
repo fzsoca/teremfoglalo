@@ -1,18 +1,2 @@
-<section>
-  <article ng-repeat="e in events.slice().reverse()">
-    <header>
-      <h1> {{e.name}} </h1>
 
-    </header>
-    <p>{{e.room.name}}</p>
-    <p>{{e.owner.name}}</p>
-    <div class="actions" ng-show="currentUser">
-      <button ui-sref="delete-event({ eventId: e.id })">Delete</button>
-      <button ui-sref="join-event({ eventId: e.id })">Join</button>
-    </div>
-  </article>
-  {{eventSources}}
-  <div ui-calendar="uiConfig.calendar" ng-model="eventSources" calendar="myCalendar"></div>
-
-
-</section>
+<div ui-calendar="uiConfig.calendar" ng-model="eventSources" calendar="myCalendar"></div>

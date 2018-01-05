@@ -1,0 +1,17 @@
+<section>
+
+    <header>
+      <h1> {{event.name}} </h1>
+
+    </header>
+    <p>Owner: {{event.owner.name}}</p>
+    <div class="actions" ng-show="currentUser">
+      <button ui-sref="join-event({ eventId: event.id })">Join</button>
+      <button ui-sref="delete-event({ eventId: event.id })">Delete</button>
+      <button ui-sref="invite-users({eventId: event.id})" ng-show="currentUser.id == event.owner.id">Invite people</button>
+    </div>
+
+  <p ng-repeat="p in participants">Participants: {{p.name}}</p>
+
+
+</section>

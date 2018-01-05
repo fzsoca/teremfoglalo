@@ -1,13 +1,32 @@
 module.exports = function(app) {
   var postgresDs = app.dataSources.postgresDs;
   postgresDs.automigrate('participation');
-
+  postgresDs.automigrate('registrationToken');
+  var Role = app.models.Role;
+  var RoleMapping = app.models.RoleMapping;
+  var CustomUser = app.models.customUser;
+  CustomUser.settings.acls = [
+    { principalType: 'ROLE',
+      principalId: '$everyone',
+      permission: 'ALLOW' }
+];
   postgresDs.automigrate('customUser', function(err) {
     if (err) return;
     app.models.customUser.create({
       name: 'Asd',
       email: 'asd@asd.com',
       password: 'asd',
+    }).then(function (user) {
+      Role.create({
+        name: 'admin'
+      }, function(err, role) {
+        role.principals.create({
+          principalType: RoleMapping.USER,
+          principalId: user.id
+        }, function(err, principal) {
+
+        });
+      });
     });
   });
 
@@ -32,6 +51,10 @@ module.exports = function(app) {
         name: 'IL205',
         buildingId: buildings[0].id,
       },
+        {
+          name: 'IL400',
+          buildingId: buildings[0].id,
+        },
       ], function(err, rooms) {
         if (err) throw err;
         createEvents(rooms);

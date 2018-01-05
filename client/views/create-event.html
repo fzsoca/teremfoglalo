@@ -4,29 +4,26 @@
       <legend>Create event</legend>
 
       <div class="form-group">
-      <label for="name">Név</label>
-        <input type="text" id="name" name="name" ng-model="event.name" required>
+      <label for="name" style="text-align: left" class="control-label pull-left">Name</label>
+        <input class="form-control" type="text" id="name" name="name" ng-model="event.name" required>
 
       </div>
       <div class="form-group">
-        <label for="startDate">Kezdés időpontja</label>
-          <input type="datetime-local" id="startDate" name="startDate" ng-model="event.startDate" required>
+        <label for="startDate" style="text-align: left">Start date</label>
+          <input class="form-control input-underline input-lg" type="datetime-local" id="startDate" name="startDate" ng-model="event.startDate" required>
 
       </div>
       <div class="form-group">
-        <label for="endDate">Befejezés időpontja</label>
-          <input type="datetime-local" id="endDate" name="endDate" ng-model="event.endDate">
+        <label for="endDate" style="text-align: left">End date</label>
+          <input class="form-control input-underline input-lg" type="datetime-local" id="endDate" name="endDate" ng-model="event.endDate">
 
       </div>
       <div class="form-group">
-        <label for="description">Leírás</label>
-          <input type="textarea" id="description" name="description" ng-model="event.description">
+        <label for="description" style="text-align: left">Description</label>
+          <input class="form-control input-underline input-lg" type="textarea" id="description" name="description" ng-model="event.description">
       </div>
 
-      <div class="actions">
-        <label></label>
-        <button>Post</button>
-      </div>
+        <button class="btn btn-white btn-outline btn-lg btn-rounded">Létrehoz</button>
     </fieldset>
   </form>
   <section>

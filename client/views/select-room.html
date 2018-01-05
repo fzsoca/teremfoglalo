@@ -1,9 +1,8 @@
-<section>
-  <article ng-repeat="r in rooms.slice().reverse()">
-    <header>
-      <a ui-sref="create-event({ roomId: r.id })" ui-sref-active="active">{{r.name}} </a>
 
-    </header>
+<ul class="list-group" ng-repeat="r in rooms.slice().reverse()">
+  <p>{{r.name}}</p>
+  <a  ui-sref="create-event({ roomId: r.id })"  class="list-group-item"> Create an event in this room</a>
+  <a  ui-sref="statistics({roomId: r.id})"  class="list-group-item"> Show statistics for this room</a>
+</ul>
 
-  </article>
-</section>
+

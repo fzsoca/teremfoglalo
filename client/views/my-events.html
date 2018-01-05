@@ -1,0 +1,8 @@
+<section>
+  <article ng-repeat="e in events.slice().reverse()">
+    <header>
+      <p>{{e.name}}</p>
+      <a ui-sref="invite-users({eventId: e.id})">Invite people</a>
+    </header>
+  </article>
+</section>

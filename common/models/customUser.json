@@ -23,6 +23,14 @@
       "type": "hasMany",
       "model": "event",
       "foreignKey": "ownerId"
+    },
+    "registrationToken":{
+      "type": "hasOne",
+      "model": "registrationToken"
+    },
+    "accessToken":{
+      "type": "hasOne",
+      "model": "AccessToken"
     }
   },
   "acls": [
@@ -30,7 +38,7 @@
       "accessType": "*",
       "principalType": "ROLE",
       "principalId": "$everyone",
-      "permission": "DENY"
+      "permission": "ALLOW"
     }
   ],
   "methods": {}

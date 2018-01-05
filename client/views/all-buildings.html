@@ -1,9 +1,9 @@
-<section>
-  <article ng-repeat="b in buildings.slice().reverse()">
-    <header>
-      <a ui-sref="select-room({ id: b.id })" ui-sref-active="active">{{b.name}} </a>
 
-    </header>
-    <p>{{b.address}}</p>
-  </article>
-</section>
+  <ul class="list-group">
+    <a ui-sref="select-room({ buildingId: b.id })" ui-sref-active="active" ng-repeat="b in buildings" class="list-group-item">{{b.name}} Show rooms for this building</a>
+  </ul>
+
+
+
+
+

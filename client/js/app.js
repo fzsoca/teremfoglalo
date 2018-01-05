@@ -29,6 +29,16 @@ angular
       templateUrl: 'views/all-buildings.html',
       controller: 'AllBuildingsController'
     })
+    .state('statistics', {
+      url: '/statistics/:roomId',
+      templateUrl: 'views/statistics.html',
+      controller: 'StatisticsController'
+    })
+    .state('event-details', {
+    url: '/event-details/:eventId',
+    templateUrl: 'views/event-details.html',
+    controller: 'EventDetailsController'
+  })
     .state('all-events', {
       url: '/all-events',
       templateUrl: 'views/all-events.html',
@@ -50,9 +60,27 @@ angular
       templateUrl: 'views/create-event.html',
       authenticate: true
     })
+    .state('my-events', {
+      url: '/my-events',
+      controller: 'MyEventsController',
+      templateUrl: 'views/my-events.html',
+      authenticate: true
+    })
+    .state('invite-users', {
+      url: '/event-details/:eventId/invite',
+      controller: 'InviteUsersController',
+      templateUrl: 'views/invite.html',
+      authenticate: true
+    })
+    .state('invite', {
+      url: '/invite/:userId/:eventId',
+      controller: 'SendInviteController',
+      authenticate: true
+    })
     .state('logout', {
       url: '/logout',
       controller: 'AuthLogoutController'
+
     })
     .state('sign-up', {
       url: '/sign-up',
@@ -60,7 +88,7 @@ angular
       controller: 'SignUpController'
     })
     .state('select-room', {
-      url: '/select-room',
+      url: '/select-room/:buildingId',
       templateUrl: 'views/select-room.html',
       controller: 'RoomsByBuildingController'
     })

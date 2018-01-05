@@ -1,0 +1,64 @@
+<canvas id="statisticsCanvas" width="600" height="400"></canvas>
+<script>
+  ctx = document.getElementById('statisticsCanvas').getContext('2d');
+  var currd = new Date();
+  var d = new Date();
+  d.setMonth(d.getMonth() - 1);
+
+  var filter = {"filter":{"where": {"and": [{"start_date":{"gt":d}}, {"end_date":{"lt": currd}}]}}};
+  var array = window.location.href.split('/');
+  var roomNum = array.pop();
+
+  $.ajax('http://localhost:3000/api/rooms/' + roomNum + '/events',{
+      type: 'GET',
+      data: filter,
+    dataType: 'json',
+      success: function drawChart(response) {
+
+          var data = [];
+          for(var i = 4; i > 0; i--){
+              var PeriodStart = new Date();
+              var PeriodEnd = new Date();
+              PeriodStart.setDate(currd.getDate() - (i*7));
+              PeriodEnd.setDate(currd.getDate() - ((i-1)*7));
+
+              var sum = 0;
+            response.forEach(function (e) {
+                var start = new Date(e.start_date);
+              var end = new Date(e.end_date);
+                if(end.getTime() > PeriodStart.getTime() && start.getTime() < PeriodEnd.getTime()){
+                    if(start.getTime() > PeriodStart.getTime() && start.getTime() < PeriodEnd.getTime()){
+                        sum += (end.getTime() - start.getTime());
+                    }else {
+                      sum += (end.getTime() - PeriodStart.getTime());
+                    }
+                }
+            });
+            data.push(sum / (currd.getTime() -d.getTime() ) );
+          }
+          console.log(data);
+        var chart = new Chart(ctx, {
+
+          type: 'line',
+
+
+          data: {
+            labels: ["Week1", "Week2", "Week3", "Week4"],
+            datasets: [{
+              label: "Usage",
+              borderColor: 'rgb(255, 99, 132)',
+              steppedLine: false,
+              data: data
+            }]
+          },
+
+
+          options: {}
+        });
+
+      }
+  });
+
+
+
+</script>
